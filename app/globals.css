@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
+@theme {
+  /* ONURRHOCAM marka paleti — sarı & koyu yeşil */
+  --color-forest: #1f5f3a;
+  --color-forest-deep: #144428;
+  --color-forest-soft: #2e7a4e;
+  --color-mint: #eaf4ec;
+  --color-mint-2: #dcecdf;
+
+  --color-sun: #f4c542;
+  --color-sun-soft: #f9dd85;
+  --color-sun-deep: #d9a916;
+  --color-sun-pale: #fdf4d9;
+
+  --color-paper: #fdfcf7;
+  --color-slate: #23292b;
+  --color-slate-soft: #414b4e;
+  --color-slate-muted: #6b7678;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 18px 50px -24px rgba(31, 95, 58, 0.35);
+  --shadow-card: 0 12px 40px -20px rgba(31, 95, 58, 0.25);
+  --shadow-sun: 0 14px 30px -12px rgba(244, 197, 66, 0.55);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-paper);
+  --foreground: var(--color-slate);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: color-mix(in srgb, var(--color-forest) 12%, transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-sun) 45%, transparent);
+  color: var(--color-forest-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Akan güven bandı */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Yumuşak yüzen bloblar */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.05);
+  }
+}
+
+.animate-floaty {
+  animation: floaty 9s ease-in-out infinite;
+}
+
+/* Hafif nabız gibi parlayan CTA halkası */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 197, 66, 0.45);
+  }
+  55% {
+    box-shadow: 0 0 0 12px rgba(244, 197, 66, 0);
+  }
+}
+
+.animate-glow {
+  animation: glow 2.6s ease-out infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Form girişleri */
+.input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-forest) 15%, transparent);
+  background: white;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-slate);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder {
+  color: var(--color-slate-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-forest);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-sun) 35%, transparent);
 }
