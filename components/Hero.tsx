@@ -46,7 +46,7 @@ export function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-6 font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-forest-deep text-balance sm:text-6xl"
+            className="mt-6 font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-forest-deep text-balance sm:text-5xl lg:text-6xl"
           >
             Hedefine{" "}
             <span className="relative whitespace-nowrap">
@@ -98,14 +98,14 @@ export function Hero() {
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-3">
             <a
               href="#iletisim"
-              className="group animate-glow inline-flex items-center gap-2 rounded-full bg-sun px-7 py-4 font-display font-bold text-forest-deep transition-transform hover:-translate-y-0.5"
+              className="group animate-glow inline-flex w-full items-center justify-center gap-2 rounded-full bg-sun px-7 py-4 font-display font-bold text-forest-deep transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
               📞 Ücretsiz Ön Görüşme
               <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#iletisim"
-              className="inline-flex items-center gap-2 rounded-full bg-forest px-7 py-4 font-display font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-forest-deep"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-forest px-7 py-4 font-display font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-forest-deep sm:w-auto"
             >
               📋 Başvuru Yap
             </a>
@@ -143,7 +143,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="absolute -bottom-5 -left-6 flex items-center gap-3 rounded-2xl border border-forest/10 bg-white px-4 py-3 shadow-card"
+            className="absolute -bottom-5 left-1 flex items-center gap-3 rounded-2xl border border-forest/10 bg-white px-3.5 py-2.5 shadow-card sm:-left-6 sm:px-4 sm:py-3"
           >
             <span className="grid h-10 w-10 place-items-center rounded-full bg-sun/25 text-lg">
               🏆
@@ -158,7 +158,7 @@ export function Hero() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="absolute -right-4 -top-5 flex items-center gap-2 rounded-2xl border border-forest/10 bg-white px-4 py-2.5 shadow-card"
+            className="absolute right-1 -top-5 flex items-center gap-2 rounded-2xl border border-forest/10 bg-white px-3.5 py-2 shadow-card sm:-right-4 sm:px-4 sm:py-2.5"
           >
             <span className="text-lg">📈</span>
             <p className="text-sm font-bold text-forest-deep">Günlük takip</p>

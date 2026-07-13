@@ -31,14 +31,14 @@ export function Packages() {
           {packages.map((p) => (
             <RevealItem
               key={p.name}
-              className={`group relative flex flex-col rounded-3xl p-8 transition-transform hover:-translate-y-2 ${
+              className={`group relative flex flex-col rounded-3xl p-6 transition-transform hover:-translate-y-2 lg:p-8 ${
                 p.featured
                   ? "border-2 border-sun bg-white text-slate shadow-sun md:-mt-4"
                   : "border border-white/15 bg-white/[0.06] backdrop-blur"
               }`}
             >
               {p.featured && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-sun px-4 py-1.5 text-sm font-bold text-forest-deep shadow-sun">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-sun px-3 py-1 text-xs font-bold text-forest-deep shadow-sun lg:px-4 lg:py-1.5 lg:text-sm">
                   ⭐ En Çok Tercih Edilen
                 </span>
               )}

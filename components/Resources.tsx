@@ -26,14 +26,14 @@ export function Resources() {
         </Reveal>
 
         <RevealGroup
-          className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"
+          className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5"
           stagger={0.07}
         >
           {resources.map((r) => (
             <RevealItem key={r.title}>
               <a
                 href={r.href}
-                className="group flex h-full flex-col items-center rounded-3xl border border-white/15 bg-white/[0.06] p-6 text-center backdrop-blur transition-all hover:-translate-y-1.5 hover:border-sun/50 hover:bg-white/10"
+                className="group flex h-full flex-col items-center rounded-3xl border border-white/15 bg-white/[0.06] p-4 text-center backdrop-blur transition-all hover:-translate-y-1.5 hover:border-sun/50 hover:bg-white/10 sm:p-6"
               >
                 <span className="grid h-13 w-13 place-items-center rounded-2xl bg-sun/20 text-sun transition-colors group-hover:bg-sun group-hover:text-forest-deep">
                   <NamedIcon name={r.icon} className="h-6.5 w-6.5" />

@@ -52,10 +52,10 @@ export function Contact() {
   return (
     <section id="iletisim" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="overflow-hidden rounded-[2.5rem] border border-forest/10 bg-white shadow-soft">
+        <div className="overflow-hidden rounded-3xl border border-forest/10 bg-white shadow-soft sm:rounded-[2.5rem]">
           <div className="grid lg:grid-cols-2">
             {/* Sol: bilgi */}
-            <div className="relative overflow-hidden bg-forest p-9 text-white sm:p-12">
+            <div className="relative overflow-hidden bg-forest p-6 text-white sm:p-9 lg:p-12">
               <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-sun/20 blur-3xl" />
               <Reveal>
                 <span className="text-sm font-bold uppercase tracking-wider text-sun">
@@ -115,7 +115,7 @@ export function Contact() {
             </div>
 
             {/* Sağ: başvuru formu */}
-            <div className="p-9 sm:p-12">
+            <div className="p-6 sm:p-9 lg:p-12">
               <AnimatePresence mode="wait">
                 {sent ? (
                   <motion.div

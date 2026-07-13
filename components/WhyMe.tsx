@@ -21,7 +21,7 @@ export function WhyMe() {
           {whyMe.map((w, i) => (
             <RevealItem
               key={w.title}
-              className="group relative overflow-hidden rounded-3xl border border-forest/10 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-card"
+              className="group relative overflow-hidden rounded-3xl border border-forest/10 bg-white p-6 transition-all hover:-translate-y-2 hover:shadow-card sm:p-7"
             >
               <span className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-sun/15 transition-transform duration-500 group-hover:scale-[2.5]" />
               <span className="relative grid h-13 w-13 place-items-center rounded-2xl bg-forest text-sun">

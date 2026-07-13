@@ -11,11 +11,11 @@ export const site = {
   tagline:
     "Sadece program hazırlayan değil, öğrencisini her gün takip eden bir koçluk sistemi.",
   location: "Konya · Online & Yüz Yüze",
-  email: "iletisim@onurrhocam.com", // ✏️ gerçek e-posta
-  phone: "+90 555 000 00 00", // ✏️ gerçek telefon
-  whatsapp: "+905550000000", // ✏️ sadece rakam, ülke koduyla
+  email: "onurrakbag@gmail.com", // ✏️ gerçek e-posta
+  phone: "+90 545 472 31 64", // ✏️ gerçek telefon
+  whatsapp: "+905454723164", // ✏️ sadece rakam, ülke koduyla
   socials: {
-    instagram: "https://instagram.com/onurrhocam",
+    instagram: "https://www.instagram.com/onurrhocam",
   },
 };
 
