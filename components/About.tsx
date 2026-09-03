@@ -15,11 +15,11 @@ export function About() {
             <div className="absolute -left-4 -top-4 h-full w-full rounded-[2rem] bg-sun/40" />
             <div className="relative aspect-[4/4.2] overflow-hidden rounded-[2rem] border-4 border-white bg-black shadow-card">
               <Image
-                src="/about.jpg"
+                src="/oaprofile.jpg"
                 alt="Onur Akbağ"
                 fill
                 sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover object-top"
+                className="object-cover object-[50%_35%]"
               />
             </div>
             <div className="absolute -bottom-5 right-6 rounded-2xl bg-forest px-5 py-3 font-display text-sm font-bold text-sun shadow-soft">

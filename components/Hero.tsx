@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { heroBadges, site, trustWords } from "@/lib/content";
 import { ArrowIcon, CheckIcon } from "./Icons";
@@ -97,17 +98,23 @@ export function Hero() {
 
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-3">
             <a
-              href="#iletisim"
+              href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
+                "Merhaba Onur Hocam, ücretsiz ön görüşme için yazıyorum."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group animate-glow inline-flex w-full items-center justify-center gap-2 rounded-full bg-sun px-7 py-4 font-display font-bold text-forest-deep transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
               📞 Ücretsiz Ön Görüşme
               <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#iletisim"
+              href={`https://wa.me/${site.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-forest px-7 py-4 font-display font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-forest-deep sm:w-auto"
             >
-              📋 Başvuru Yap
+              💬 WhatsApp&apos;tan Yaz
             </a>
           </motion.div>
         </motion.div>
@@ -121,20 +128,23 @@ export function Hero() {
         >
           <div className="absolute -inset-3 -z-10 rounded-[2.4rem] bg-gradient-to-br from-sun/60 via-transparent to-forest/30" />
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border-4 border-white bg-gradient-to-br from-mint via-paper to-sun-pale shadow-soft">
-            {/* 🖼️ Onur'un fotoğrafı: public/portrait.jpg ekleyince burayı <Image> ile değiştiririm */}
-            <div className="absolute inset-0 grid place-items-center text-center">
-              <div className="px-6">
-                <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-forest font-display text-3xl font-bold text-sun">
-                  OA
-                </div>
-                <p className="mt-4 text-sm font-semibold text-slate-soft">
-                  Fotoğraf alanı
-                  <br />
-                  <span className="font-normal text-slate-muted">
-                    (public/portrait.jpg ekle)
-                  </span>
-                </p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
+              <div className="relative h-48 w-48 sm:h-56 sm:w-56">
+                <Image
+                  src="/logo.png"
+                  alt={`${site.name} logosu`}
+                  fill
+                  sizes="224px"
+                  priority
+                  className="object-contain"
+                />
               </div>
+              <p className="mt-5 font-display text-2xl font-extrabold text-forest-deep">
+                {site.name}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-slate-muted">
+                {site.role}
+              </p>
             </div>
           </div>
 

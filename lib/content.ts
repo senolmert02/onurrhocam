@@ -17,6 +17,14 @@ export const site = {
   socials: {
     instagram: "https://www.instagram.com/onurrhocam",
   },
+  // ✏️ Konum bilgileri — adresi ve koordinatları buradan güncelleyebilirsin
+  map: {
+    lat: 37.8742034,
+    lng: 32.4853814,
+    city: "Konya",
+    address: "Adalhan İş Merkezi, İhsaniye, 42060 Selçuklu/Konya",
+    note: "Yüz yüze görüşmeler randevu ile yapılır.",
+  },
 };
 
 // Hero'daki rozetler
@@ -234,7 +242,7 @@ export const faqs = [
   },
   {
     q: "Veliler süreçte yer alıyor mu?",
-    a: "Evet. Özellikle Premium pakette velilere düzenli bilgilendirme yapıyorum. Öğrencinin gelişimini, deneme sonuçlarını ve programa uyumunu şeffaf şekilde paylaşıyorum.",
+    a: "Evet. Velilere düzenli bilgilendirme yapıyorum. Öğrencinin gelişimini, deneme sonuçlarını ve programa uyumunu şeffaf şekilde paylaşıyorum.",
   },
   {
     q: "Kaç öğrenci kabul ediyorsunuz?",
@@ -242,7 +250,7 @@ export const faqs = [
   },
   {
     q: "Ücretler ne kadar?",
-    a: "Ücretlendirme seçtiğin pakete ve sürece göre değişiyor. Ücretsiz ön görüşmede ihtiyacını birlikte belirleyip sana uygun paketi ve ücretini net şekilde konuşuyoruz.",
+    a: "Ücretlendirme ihtiyacına ve sürece göre değişiyor. Ücretsiz ön görüşmede durumunu birlikte değerlendirip ücreti net şekilde konuşuyoruz.",
   },
 ];
 
@@ -257,9 +265,8 @@ export const resources = [
 
 export const nav = [
   { label: "Hakkımda", href: "#hakkimda" },
-  { label: "Koçluk", href: "#paketler" },
+  { label: "Koçluk", href: "#surec" },
   { label: "Başarılar", href: "#basarilar" },
-  { label: "Blog", href: "#blog" },
   { label: "S.S.S", href: "#sss" },
   { label: "İletişim", href: "#iletisim" },
 ];
