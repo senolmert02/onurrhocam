@@ -1,0 +1,1 @@
+ALTER TABLE "ogrenciler" ADD COLUMN "adres" text DEFAULT '' NOT NULL;

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Belgeler ve plan Tailwind sınıf taramasına girmesin: içlerindeki örnek
+   metinler (ör. "bg-[url(chevron)]") sahte utility üretip derlemeyi kırıyor. */
+@source not "../docs";
+@source not "../PLAN-OTS.md";
+
 @theme {
   /* ONURRHOCAM marka paleti — sarı & koyu yeşil */
   --color-forest: #1f5f3a;
@@ -31,7 +36,11 @@
   --foreground: var(--color-slate);
 }
 
-* {
+/* Portfolyo kenarlık varsayılanı. Katmansız olduğu için Tailwind border-*
+   renk sınıflarını ezer — portfolyonun bugünkü görünümü buna dayanıyor,
+   dokunulmadı. ÖTS sayfalarında (body:has(.ots-kok)) uygulanmaz; oranın
+   varsayılanı aşağıda @layer base içinde. */
+body:not(:has(.ots-kok)) * {
   border-color: color-mix(in srgb, var(--color-forest) 12%, transparent);
 }
 
@@ -132,4 +141,263 @@ body {
   outline: none;
   border-color: var(--color-forest);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-sun) 35%, transparent);
+}
+
+/* ---------------------------------------------------------------------------
+   ÖTS teması — "Lacivert Akşam" (koyu).
+
+   Koyu tema kalıyor; zemin siyaha yakın geceden bir kademe kaldırılmış mürekkep
+   laciverti. Kartlar zeminden açık, kenar menü / alt sekme / toast zeminden koyu
+   (iskelet). Tek doygun altın düz dolgu, lacivert metinle; gradyan/parıltı yok.
+   Portfolyo tokenlarına dokunulmaz; bu tokenlar yalnızca /takip altında geçerli.
+   Kontrast oranları docs/ots-tasarim-spec.md §2.2'de doğrulanmıştır.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* Yüzeyler — zeminden karta doğru açılır */
+  --color-ots-bg: #141e34;            /* sayfa zemini */
+  --color-ots-surface: #1c2842;       /* kart, girdi, diyalog, sheet */
+  --color-ots-raised: #26365a;        /* kart içi yükselti, hover, nötr rozet, sessiz düğme hover */
+  --color-ots-line: #35476e;          /* dekoratif ayırıcı, ilerleme rayı — girdi/düğme sınırında KULLANILMAZ */
+  --color-ots-line-strong: #6583bd;   /* girdi, ikincil düğme, ikon düğmesi sınırı (surface 3.87, bg 4.38, raised 3.15) */
+
+  /* Lacivert iskelet — zeminden daha koyu */
+  --color-ots-panel: #0f172a;         /* kenar menü, alt sekme çubuğu, giriş üst bloğu, toast, altın düğme metni */
+  --color-ots-panel-hover: #1a2540;   /* menü öğesi hover */
+  --color-ots-panel-line: #243352;    /* panel içi ayırıcı */
+  --color-ots-panel-ink: #eef2f9;     /* panel üstünde birincil metin */
+  --color-ots-panel-soft: #b4c0d8;    /* panel üstünde ikincil metin, pasif sekme */
+
+  /* Metin */
+  --color-ots-ink: #eef2f9;           /* birincil (surface 13.07) */
+  --color-ots-soft: #b4c0d8;          /* ikincil (surface 8.01) */
+  --color-ots-faint: #9fadc8;         /* sönük, placeholder, eksen (surface 6.49, raised 5.28) — daha koyusu yasak */
+
+  /* Altın vurgu — tek doygun altın, gradyan yok */
+  --color-ots-gold: #f2b722;          /* birincil düğme, FAB, etkin gösterge, sari ilerleme dolgusu (line 5.08) */
+  --color-ots-gold-hover: #ffc633;    /* birincil düğme hover */
+  --color-ots-gold-deep: #d49b18;     /* odak halkası, vurgu kart kenarlığı, "bugün" halkası (surface 5.94) */
+  --color-ots-gold-ink: #f7c94f;      /* koyu zeminde altın metin/ikon (surface 9.38, raised 7.64) */
+  --color-ots-gold-bright: #f7c94f;   /* panel üstünde altın metin (= gold-ink; ad uyumluluğu için) */
+  --color-ots-gold-tint: #3a3320;     /* altın vurgulu kart/uyarı/rozet zemini (sabit hex; gold-ink 8.02, ink 11.17) */
+
+  /* Durum renkleri — her zaman metin etiketiyle birlikte kullanılır */
+  --color-ots-yesil: #3ad29a;         /* surface 7.59 */
+  --color-ots-yesil-tint: #1f3f4a;    /* yesil 5.82 */
+  --color-ots-turuncu: #ff9f43;       /* surface 7.19 */
+  --color-ots-turuncu-tint: #3f3330;  /* turuncu 5.96 */
+  --color-ots-kirmizi: #ff7676;       /* metin, çerçeve, kritik rozet (surface 5.66) */
+  --color-ots-kirmizi-dolgu: #cc3333; /* dolu tehlike düğmesi zemini (ink 4.57) */
+  --color-ots-kirmizi-hover: #b82d2d; /* dolu tehlike düğmesi hover */
+  --color-ots-kirmizi-tint: #3f2a35;  /* kirmizi 5.08 */
+
+  /* Perde — backdrop-blur yok */
+  --color-ots-overlay: rgba(8, 13, 26, 0.62);
+
+  /* Gölgeler — koyu zeminde kısa ve yumuşak */
+  --shadow-ots: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px -16px rgba(0, 0, 0, 0.5);
+  --shadow-ots-hover: 0 1px 2px rgba(0, 0, 0, 0.25), 0 12px 28px -16px rgba(0, 0, 0, 0.65);
+  --shadow-ots-dialog: 0 24px 64px -24px rgba(0, 0, 0, 0.7);
+  --shadow-ots-sheet: 0 -8px 32px -12px rgba(0, 0, 0, 0.6);
+  --shadow-ots-gold: 0 6px 16px -8px rgba(242, 183, 34, 0.45);
+
+  /* Tek easing */
+  --ease-ots: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ÖTS sayfalarında gövde zemini de koyu lacivert olsun — aşırı kaydırmada
+   portfolyo sitesinin krem zemini görünmesin. */
+body:has(.ots-kok) {
+  background: var(--color-ots-bg);
+  color: var(--color-ots-ink);
+}
+
+/* ---------------------------------------------------------------------------
+   ÖTS yüzey dili
+
+   Kartlar zeminden bir kademe açık renk, 1px `line` kenarlık ve hafif gölgeyle
+   ayrılır. Gradyan, iç parlaklık, transform yok. Sayılar tabular.
+--------------------------------------------------------------------------- */
+
+.ots-kok {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: auto;
+}
+
+/* ÖTS kenarlık varsayılanı — @layer base içinde: utility katmanı sonra
+   gelir, border-ots-line-strong / border-ots-gold-deep gibi sınıflar bunu
+   ezer. body:has() seçicisi vaul/sonner portallarını da (ots-kok dışında,
+   body altında) kapsar. */
+@layer base {
+  body:has(.ots-kok) * {
+    border-color: var(--color-ots-line);
+  }
+}
+
+.ots-kok button,
+.ots-kok a,
+.ots-kok [role='button'] {
+  touch-action: manipulation;
+}
+
+.ots-yuzey {
+  background-image: none;
+  box-shadow: var(--shadow-ots);
+}
+
+/* Yalnızca tıklanabilir kartlar — kenarlık koyulaşır, gölge büyür; transform yok */
+.ots-yuzey-hover {
+  transition:
+    border-color 180ms var(--ease-ots),
+    box-shadow 180ms var(--ease-ots);
+}
+.ots-yuzey-hover:hover {
+  border-color: var(--color-ots-line-strong);
+  box-shadow: var(--shadow-ots-hover);
+}
+
+/* Uzun listelerde ekran dışı öğelerin düzen maliyeti ertelenir */
+.ots-liste-oge {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 120px;
+}
+
+/* Sayılar hizalı kalsın */
+.ots-sayi {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* İçerik girişte aşağıdan yukarı belirir; `--i` ile kart başına 40ms kademe.
+   Azaltılmış hareket tercihinde kapalı. */
+@keyframes ots-belir {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.ots-belir {
+  animation: ots-belir 300ms var(--ease-ots) both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ots-belir {
+    animation: none;
+  }
+}
+
+/* Belir (motion) sarmalayıcısı: sunucu HTML'i her iki tercihte aynı başlangıç
+   stilini (opacity 0) taşır; hareket azaltma tercihinde ve yazdırmada içerik
+   beklemeden görünür. `!important` motion'ın satır içi stilini ezer. */
+@media (prefers-reduced-motion: reduce) {
+  .ots-belir-kap {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+@media print {
+  .ots-belir-kap {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Haftalık program çıktısı
+
+   PDF için kütüphane yok: tarayıcının kendi yazdırma motoru A4 yatay çıktı
+   üretiyor. Metin seçilebilir kalıyor, dosya küçük oluyor, bağımlılık gelmiyor.
+--------------------------------------------------------------------------- */
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  /* Ekrana ait ne varsa gizle: menü, düğmeler, seçiciler */
+  .yazdirma-disi,
+  aside,
+  header,
+  nav {
+    display: none !important;
+  }
+
+  /* Panel kabuğunun kenar boşlukları çıktıda yer yemesin */
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Çıktı beyaz zemin, siyah metin — koyu tema kartuş yakar */
+  html,
+  body,
+  body:has(.ots-kok),
+  .ots-kok,
+  .ots-kok main {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .yazdir-alani,
+  .yazdir-alani * {
+    background: transparent !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .yazdir-alani {
+    display: block !important;
+  }
+
+  .yazdir-izgara {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: 6.6cm 6.6cm !important;
+    gap: 0 !important;
+    /* İki satır da aynı sayfada kalsın — aksi hâlde alt sıra ikinci kâğıda taşıyor */
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .yazdir-alani {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .yazdir-hucre {
+    border: 1px solid #555 !important;
+    border-radius: 0 !important;
+    padding: 6px 8px !important;
+    overflow: hidden;
+    break-inside: avoid;
+  }
+
+  .yazdir-gorev {
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    padding: 1px 0 !important;
+    border: 0 !important;
+  }
+}
+
+/* Yazdırmada logo ve not alanı */
+@media print {
+  .yazdir-logo {
+    filter: grayscale(1) contrast(1.1);
+  }
+  .yazdir-not {
+    color: #111 !important;
+    font-size: 8.5pt !important;
+  }
+  .yazdir-not::placeholder {
+    color: transparent !important;
+  }
 }

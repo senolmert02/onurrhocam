@@ -270,3 +270,14 @@ export const nav = [
   { label: "S.S.S", href: "#sss" },
   { label: "İletişim", href: "#iletisim" },
 ];
+
+/**
+ * Öğrenci Takip Sistemi girişi.
+ *
+ * `nav` dizisinden ayrı duruyor: oradakiler sayfa içi çapa bağlantıları,
+ * bu ise ayrı bir uygulamaya giden gerçek bir adres.
+ */
+export const ogrenciGirisi = {
+  label: "Öğrenci Girişi",
+  href: "/takip",
+};

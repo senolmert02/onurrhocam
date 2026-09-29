@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { nav, site } from "@/lib/content";
+import Link from "next/link";
+import { nav, ogrenciGirisi, site } from "@/lib/content";
 import { InstagramIcon, WhatsappIcon } from "./Icons";
 
 export function Footer() {
@@ -53,6 +54,14 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
+                <li className="pt-1.5">
+                  <Link
+                    href={ogrenciGirisi.href}
+                    className="text-sm font-semibold text-sun/90 transition-colors hover:text-sun"
+                  >
+                    {ogrenciGirisi.label} →
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

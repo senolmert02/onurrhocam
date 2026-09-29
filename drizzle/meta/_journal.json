@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790677915183,
+      "tag": "0000_nosy_centennial",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790683563196,
+      "tag": "0001_chilly_bug",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790687673835,
+      "tag": "0002_blue_ronan",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790688289532,
+      "tag": "0003_sharp_franklin_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790693128124,
+      "tag": "0004_revize-mezun-kaynaklar",
+      "breakpoints": true
+    }
+  ]
+}

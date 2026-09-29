@@ -1,0 +1,1 @@
+ALTER TABLE "haftalik_degerlendirme" ADD COLUMN "program_notu" text DEFAULT '' NOT NULL;

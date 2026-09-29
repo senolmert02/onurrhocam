@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { nav, site } from "@/lib/content";
+import { nav, ogrenciGirisi, site } from "@/lib/content";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,6 +66,14 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* Mevcut öğrenciler için; ana çağrı düğmesiyle yarışmasın diye ikincil. */}
+          <Link
+            href={ogrenciGirisi.href}
+            className="hidden rounded-full border border-forest/20 px-4 py-2.5 text-sm font-semibold text-forest-deep transition-colors hover:bg-mint lg:inline-block"
+          >
+            {ogrenciGirisi.label}
+          </Link>
+
           <a
             href="#iletisim"
             className="hidden rounded-full bg-sun px-5 py-2.5 text-sm font-bold text-forest-deep shadow-sun transition-transform hover:-translate-y-0.5 sm:inline-block"
@@ -120,6 +129,15 @@ export function Navbar() {
                 </li>
               ))}
               <li className="p-1">
+                <Link
+                  href={ogrenciGirisi.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-2xl border border-forest/20 px-4 py-3 text-center font-semibold text-forest-deep"
+                >
+                  {ogrenciGirisi.label}
+                </Link>
+              </li>
+              <li className="px-1 pb-1">
                 <a
                   href="#iletisim"
                   onClick={() => setOpen(false)}
