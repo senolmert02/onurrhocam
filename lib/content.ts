@@ -6,6 +6,13 @@
 export const site = {
   name: "Onur Akbağ",
   handle: "onurrhocam",
+  /**
+   * Sitenin canlı adresi — sonunda eğik çizgi YOK.
+   * Site haritası, robots.txt ve paylaşım görsellerinin adresleri buradan türer.
+   * `onurrhocam.com.tr` → `www.onurrhocam.com.tr`'ye yönleniyor; Google'a tek
+   * adres verilsin diye "www"lu hali yazılı.
+   */
+  url: "https://www.onurrhocam.com.tr",
   role: "YKS & LGS Eğitim Koçu",
   motto: "Disiplin + İstikrar = Başarı",
   tagline:

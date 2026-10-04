@@ -17,6 +17,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  // Göreli adresleri tam adrese çevirir (paylaşım görseli, canonical, sitemap).
+  metadataBase: new URL(site.url),
+  alternates: { canonical: "/" },
   title: `${site.name} — ${site.role} | @${site.handle}`,
   description: `${site.motto}. ${site.tagline} Online ve yüz yüze YKS & LGS koçluğu.`,
   keywords: [
@@ -30,8 +33,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${site.name} — ${site.role}`,
     description: `${site.motto}. ${site.tagline}`,
+    url: site.url,
+    siteName: site.name,
     locale: "tr_TR",
     type: "website",
+    images: [{ url: "/oaprofile.jpg", width: 1200, height: 630, alt: site.name }],
+  },
+  // Arama sonuçlarında görünsün; büyük önizleme ve tam uzunlukta açıklama.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
