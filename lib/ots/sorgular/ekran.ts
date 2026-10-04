@@ -10,6 +10,7 @@ import 'server-only';
 
 import {
   haftaKarsilastir,
+  gunlukSeri,
   haftalikSeri,
   konuIstatistikleri,
   ozetle,
@@ -215,6 +216,14 @@ export async function raporVerisi(ogrenci: Ogrenci, haftaAnahtari?: GunAnahtari)
       calismalar: seriCalismalar,
       bugun,
       haftaSayisi: 8,
+    }),
+    /* Rapordaki eğilim grafikleri için günlük seri — son 30 gün gönderilir,
+       "1 hafta" görünümü istemcide son 7 güne kırpar (ikinci sorgu yok). */
+    gunlukTrend: gunlukSeri({
+      gorevler: seriGorevler,
+      calismalar: seriCalismalar,
+      bugun,
+      gunSayisi: 30,
     }),
     /* Yanlış analizi — deneme formunda toplanıyordu ama gösterilmiyordu. */
     yanlisAnalizi: {

@@ -236,7 +236,11 @@ export function CizgiGrafigi({
 
           {/* X ekseni etiketleri — kalabalıksa seyreltilir */}
           {etiketler.map((etiket, i) => {
-            const atla = etiketler.length > 8 && i % 2 === 1;
+            /* En fazla ~7 etiket sığar; fazlası seyreltilir. Son etiket her
+               zaman kalır ki eksenin bittiği tarih görünsün (30 günlük
+               görünümde 30 etiket üst üste biniyordu). */
+            const adim = Math.max(1, Math.ceil(etiketler.length / 7));
+            const atla = i % adim !== 0 && i !== etiketler.length - 1;
             if (atla) return null;
             return (
               <text

@@ -457,6 +457,56 @@ export type HaftaNoktasi = {
   tamamlanan: number;
 };
 
+export type GunNoktasi = {
+  gun: GunAnahtari;
+  etiket: string;
+  uyum: number;
+  soru: number;
+  sure: number;
+  /**
+   * O gün vadesi gelmiş görev var mı?
+   *
+   * Yoksa `uyum` 0 çıkar (payda sıfır) ama bu "yapmadı" demek değil, "program
+   * yoktu" demektir. Uyum grafiği bu günleri atlar; soru ve süre için 0 gerçek
+   * bir değerdir, atlanmaz.
+   */
+  gorevVar: boolean;
+};
+
+/** Son N günün serisi, eskiden yeniye. */
+export function gunlukSeri(girdi: {
+  gorevler: readonly GorevGirdisi[];
+  calismalar: readonly CalismaGirdisi[];
+  bugun: GunAnahtari;
+  gunSayisi?: number;
+  esikler?: EsikAyarlari;
+}): GunNoktasi[] {
+  const adet = girdi.gunSayisi ?? 30;
+  const seri: GunNoktasi[] = [];
+
+  for (let geri = adet - 1; geri >= 0; geri--) {
+    const gun = gunEkle(girdi.bugun, -geri);
+    const ozet = ozetle({
+      gorevler: girdi.gorevler,
+      calismalar: girdi.calismalar,
+      baslangic: gun,
+      bitis: gun,
+      bugun: girdi.bugun,
+      esikler: girdi.esikler,
+    });
+    seri.push({
+      gun,
+      etiket: trTarihKisa(gun),
+      uyum: ozet.uyum,
+      soru: ozet.cozulenSoru,
+      sure: ozet.calismaSuresi,
+      gorevVar: ozet.vadesiGelenGorev > 0,
+    });
+  }
+
+  return seri;
+}
+
 /** Son N haftanın serisi, eskiden yeniye. */
 export function haftalikSeri(girdi: {
   gorevler: readonly GorevGirdisi[];

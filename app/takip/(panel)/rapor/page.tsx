@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Belir } from '@/components/ots/Belir';
 import { CizgiGrafigi, CubukListesi } from '@/components/ots/Grafik';
-import { GrafikSekmeleri, type GrafikSekmesi } from '@/components/ots/GrafikSekmeleri';
+import { RaporGrafikleri } from '@/components/ots/RaporGrafikleri';
 import { DegerlendirmeFormu } from '@/components/ots/koc/DegerlendirmeFormu';
 import { OgrenciSecici } from '@/components/ots/koc/OgrenciSecici';
 import {
@@ -69,41 +69,6 @@ export default async function RaporSayfasi({
     const s = p.toString();
     return s ? `/takip/rapor?${s}` : '/takip/rapor';
   };
-
-  /* Üç grafik — farklı ölçekteki ölçüler aynı eksene konmaz; lg altında tek
-     kartta sekmeli, lg+'da yan yana. Aynı veri iki dala da verilir. */
-  const grafikler: GrafikSekmesi[] = [
-    {
-      anahtar: 'uyum',
-      etiket: 'Uyum',
-      baslik: 'Program uyumu',
-      altBaslik: 'Son 8 hafta',
-      birim: '%',
-      seriler: [
-        { ad: 'Uyum', noktalar: veri.trend.map((t) => ({ etiket: t.etiket, deger: t.uyum })) },
-      ],
-    },
-    {
-      anahtar: 'soru',
-      etiket: 'Soru',
-      baslik: 'Çözülen soru',
-      altBaslik: 'Son 8 hafta',
-      birim: ' soru',
-      seriler: [
-        { ad: 'Soru', noktalar: veri.trend.map((t) => ({ etiket: t.etiket, deger: t.soru })) },
-      ],
-    },
-    {
-      anahtar: 'sure',
-      etiket: 'Süre',
-      baslik: 'Çalışma süresi',
-      altBaslik: 'Son 8 hafta · dakika',
-      birim: ' dk',
-      seriler: [
-        { ad: 'Süre', noktalar: veri.trend.map((t) => ({ etiket: t.etiket, deger: t.sure })) },
-      ],
-    },
-  ];
 
   const kocDegerlendirmesi = (
     <Kart
@@ -235,20 +200,10 @@ export default async function RaporSayfasi({
         </Kart>
       </Belir>
 
-      {/* Grafikler: lg altı sekmeli tek kart, lg+ üç yan yana */}
-      <Belir className="lg:hidden">
-        <Kart baslik="Son 8 hafta" altBaslik="Uyum, soru ve süre eğilimi">
-          <GrafikSekmeleri sekmeler={grafikler} yukseklik={150} />
-        </Kart>
-      </Belir>
-      <Belir className="hidden lg:block">
-        <div className="grid gap-4 lg:grid-cols-3 sm:gap-5">
-          {grafikler.map((g) => (
-            <Kart key={g.anahtar} baslik={g.baslik} altBaslik={g.altBaslik}>
-              <CizgiGrafigi seriler={g.seriler} birim={g.birim} yukseklik={150} />
-            </Kart>
-          ))}
-        </div>
+      {/* Eğilim: aralık seçici (1 hafta / 1 ay), noktalar günlük.
+          lg altı sekmeli tek kart, lg+ üç grafik yan yana. */}
+      <Belir>
+        <RaporGrafikleri gunler={veri.gunlukTrend} yukseklik={150} />
       </Belir>
 
       {/* Doğru / yanlış / boş toplamı */}
