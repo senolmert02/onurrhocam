@@ -64,3 +64,19 @@ export function LogoCizim({ className = '' }: { className?: string }) {
     </svg>
   );
 }
+
+/**
+ * Logonun sabit hâli — header ve küçük yerler için. Renk `currentColor`'dan
+ * gelir (ör. `text-forest-deep`); PNG'nin bulanıklığı ve beyaz zemini yok.
+ */
+export function LogoIsaret({ className = '', etiket = 'Onur Hocam logosu' }: { className?: string; etiket?: string }) {
+  return (
+    <svg viewBox="115 60 613 613" className={className} role="img" aria-label={etiket}>
+      <g transform="translate(0,690) scale(0.1,-0.1)" fill="currentColor">
+        {YOLLAR.map((y, i) => (
+          <path key={i} d={y.d} />
+        ))}
+      </g>
+    </svg>
+  );
+}
