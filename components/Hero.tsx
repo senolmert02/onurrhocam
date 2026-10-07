@@ -42,7 +42,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/70 px-4 py-1.5 text-sm font-semibold text-forest backdrop-blur"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-sun-deep" />
-            {site.markaAdi} · YKS & LGS Koçluğu · Birebir Takip
+            {site.markaAdi} · YKS & LGS Koçluğu<span className="hidden sm:inline"> · Birebir Takip</span>
           </motion.span>
 
           <motion.h1

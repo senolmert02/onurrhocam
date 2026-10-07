@@ -26,7 +26,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="iletisim" className="relative py-24 sm:py-32">
+    <section id="iletisim" className="relative py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-5">
         <div className="relative overflow-hidden rounded-3xl bg-forest p-6 text-white shadow-soft sm:p-10 sm:rounded-[2.5rem] lg:p-14">
           <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-sun/20 blur-3xl" />
@@ -71,7 +71,7 @@ export function Contact() {
                         <p className="text-xs font-bold uppercase tracking-wider text-mint/50">
                           {c.label}
                         </p>
-                        <p className="truncate font-semibold">{c.value}</p>
+                        <p className="break-words font-semibold leading-snug">{c.value}</p>
                       </div>
                     </div>
                   );

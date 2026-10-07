@@ -7,7 +7,7 @@ import { CheckIcon } from "./Icons";
 
 export function About() {
   return (
-    <section id="hakkimda" className="relative py-24 sm:py-32">
+    <section id="hakkimda" className="relative py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           {/* Fotoğraf bloğu */}

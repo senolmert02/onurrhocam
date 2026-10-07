@@ -6,7 +6,7 @@ import { NamedIcon } from "./Icons";
 
 export function WhyMe() {
   return (
-    <section className="relative bg-mint/60 py-24 sm:py-28">
+    <section className="relative bg-mint/60 py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-bold uppercase tracking-wider text-forest">

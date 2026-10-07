@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { LogoIsaret } from "./LogoCizim";
 import Link from "next/link";
 import { nav, ogrenciGirisi, site } from "@/lib/content";
 import { InstagramIcon, WhatsappIcon } from "./Icons";
@@ -13,14 +13,8 @@ export function Footer() {
               href="#top"
               className="flex items-center gap-2.5 font-display text-xl font-bold"
             >
-              <span className="relative block h-10 w-10 overflow-hidden rounded-full bg-white">
-                <Image
-                  src="/logo.jpg"
-                  alt={`${site.name} logo`}
-                  fill
-                  sizes="40px"
-                  className="scale-110 object-cover"
-                />
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-paper text-forest-deep">
+                <LogoIsaret className="h-8 w-8" etiket={`${site.markaAdi} logosu`} />
               </span>
               {site.name}
             </a>

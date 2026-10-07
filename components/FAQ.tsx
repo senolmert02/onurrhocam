@@ -10,7 +10,7 @@ export function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section id="sss" className="relative py-24 sm:py-28">
+    <section id="sss" className="relative py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-3xl px-5">
         <Reveal className="text-center">
           <span className="text-sm font-bold uppercase tracking-wider text-forest">

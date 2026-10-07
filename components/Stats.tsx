@@ -6,7 +6,7 @@ import { Counter } from "./Counter";
 
 export function Stats() {
   return (
-    <section id="basarilar" className="relative py-20 sm:py-24">
+    <section id="basarilar" className="relative py-14 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-5">
         <RevealGroup className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {stats.map((s, i) => (

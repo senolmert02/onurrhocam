@@ -7,7 +7,7 @@ import { ArrowDownIcon } from "./Icons";
 
 export function Process() {
   return (
-    <section id="surec" className="relative py-24 sm:py-32">
+    <section id="surec" className="relative py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-3xl px-5">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-bold uppercase tracking-wider text-forest">
@@ -63,12 +63,13 @@ export function Process() {
           </ol>
         </div>
 
-        <Reveal delay={0.2} className="mt-12 text-center">
+        <Reveal delay={0.2} className="mt-10 text-center sm:mt-12">
           <a
             href="#iletisim"
             className="inline-flex items-center gap-2 rounded-full bg-sun px-7 py-4 font-display font-bold text-forest-deep shadow-sun transition-transform hover:-translate-y-0.5"
           >
-            İlk adımı at — Ücretsiz Ön Görüşme
+            <span className="sm:hidden">Ücretsiz Ön Görüşme</span>
+            <span className="hidden sm:inline">İlk adımı at — Ücretsiz Ön Görüşme</span>
             <ArrowDownIcon className="h-5 w-5 rotate-[-90deg]" />
           </a>
         </Reveal>
