@@ -20,18 +20,23 @@ export const metadata: Metadata = {
   // Göreli adresleri tam adrese çevirir (paylaşım görseli, canonical, sitemap).
   metadataBase: new URL(site.url),
   alternates: { canonical: "/" },
-  title: `${site.name} — ${site.role} | @${site.handle}`,
-  description: `${site.motto}. ${site.tagline} Online ve yüz yüze YKS & LGS koçluğu.`,
+  /* Aranan ad başta: insanlar "onur hocam" yazıyor, "Onur Akbağ" değil. */
+  title: `${site.markaAdi} — ${site.name} | ${site.role}`,
+  description: `${site.markaAdi} (${site.name}) — ${site.location.split(" · ")[0]} merkezli ${site.role}. ${site.motto}. ${site.tagline}`,
   keywords: [
+    site.markaAdi,
+    `${site.markaAdi} eğitim koçu`,
+    site.name,
     "eğitim koçu",
     "YKS koçluğu",
     "LGS koçluğu",
+    "Konya eğitim koçu",
     "online eğitim koçu",
     "birebir takip",
     site.handle,
   ],
   openGraph: {
-    title: `${site.name} — ${site.role}`,
+    title: `${site.markaAdi} — ${site.name} | ${site.role}`,
     description: `${site.motto}. ${site.tagline}`,
     url: site.url,
     siteName: site.name,

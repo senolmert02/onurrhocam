@@ -11,10 +11,13 @@ import { InstagramSection } from "@/components/InstagramSection";
 import { Contact } from "@/components/Contact";
 import { LocationMap } from "@/components/LocationMap";
 import { Footer } from "@/components/Footer";
+import { YapisalVeri } from "@/components/YapisalVeri";
 
 export default function Home() {
   return (
     <>
+      {/* Google'a kim/nerede/ne iş bilgisini veren schema.org bloğu */}
+      <YapisalVeri />
       <Preloader />
       <Navbar />
       <main className="flex-1">

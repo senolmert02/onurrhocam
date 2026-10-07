@@ -5,6 +5,12 @@
 
 export const site = {
   name: "Onur Akbağ",
+  /**
+   * Öğrencilerin ve velilerin aradığı ad. Google'da "onur hocam" diye aranıyor;
+   * bu yüzden sayfa başlığında, hero rozetinde ve yapısal veride geçiyor.
+   * Instagram kullanıcı adı çift r'li (`onurrhocam`), arama ise ayrı yazılıyor.
+   */
+  markaAdi: "Onur Hocam",
   handle: "onurrhocam",
   /**
    * Sitenin canlı adresi — sonunda eğik çizgi YOK.
