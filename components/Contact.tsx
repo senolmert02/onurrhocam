@@ -32,7 +32,7 @@ export function Contact() {
           <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-sun/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
 
-          <div className="relative grid items-center gap-10 lg:grid-cols-2">
+          <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-2 [&>*]:min-w-0">
             {/* Sol: başlık + CTA */}
             <Reveal>
               <span className="text-sm font-bold uppercase tracking-wider text-sun">
@@ -60,7 +60,7 @@ export function Contact() {
 
             {/* Sağ: iletişim kanalları */}
             <Reveal delay={0.15}>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 [&>*]:min-w-0">
                 {contactItems.map((c) => {
                   const Inner = (
                     <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur transition-colors hover:border-sun/40 hover:bg-white/10">

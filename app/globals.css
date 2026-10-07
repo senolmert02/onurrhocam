@@ -47,6 +47,7 @@ body:not(:has(.ots-kok)) * {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  overflow-x: clip;
 }
 
 body {
@@ -55,7 +56,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* hidden tek başına mobilde yana kaydırmayı engellemiyor; clip engeller */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
